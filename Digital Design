@@ -37,6 +37,17 @@ IN
  (SELECT NAME, MAX(SALARY) FROM EMPLOYEE);
  
 Вывести одно число: максимальную длину цепочки руководителей по таблице сотрудников (вычислить глубину дерева).
+WITH RECURSIVE cte AS (
+  SELECT Id, CHIEF_ID, 1 AS depth
+  FROM EMPLOYEE
+  WHERE CHIEF_ID = Id
+  UNION ALL
+  SELECT e.Id, e.CHIEF_ID, cte.depth + 1
+  FROM EMPLOYEE e
+  JOIN cte ON e.CHIEF_ID = cte.Id
+  WHERE NOT e.Id = cte.CHIEF_ID
+)
+SELECT MAX(depth) AS max_depth FROM cte;
 
 Отдел, с максимальной суммарной зарплатой сотрудников. 
 

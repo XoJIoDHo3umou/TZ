@@ -1,3 +1,4 @@
+==Задание 1
 CREATE TABLE DEPARTMENT (
   Id NUMDER PRIMARY KEY,
   NAME  VARCHAR2(100)
@@ -29,14 +30,14 @@ INSERT INTO EMPLOYEE VALUES (8, 2, 6, 'Лариса', 115);
 INSERT INTO EMPLOYEE VALUES (9, 3, 6, 'Раиса', 115);
 INSERT INTO EMPLOYEE VALUES (10, 3, 1, 'Денис', 115);
 
-Сотрудника с максимальной заработной платой.
+--Сотрудника с максимальной заработной платой.
 SELECT NAME
 FROM EMPLOYEE
 WHERE (NAME, SALARY) 
 IN 
  (SELECT NAME, MAX(SALARY) FROM EMPLOYEE);
  
-Вывести одно число: максимальную длину цепочки руководителей по таблице сотрудников (вычислить глубину дерева).
+--Вывести одно число: максимальную длину цепочки руководителей по таблице сотрудников (вычислить глубину дерева).
 WITH RECURSIVE cte AS (
   SELECT Id, CHIEF_ID, 1 AS depth
   FROM EMPLOYEE
@@ -49,7 +50,7 @@ WITH RECURSIVE cte AS (
 )
 SELECT MAX(depth) AS max_depth FROM cte;
 
-Отдел, с максимальной суммарной зарплатой сотрудников. 
+--Отдел, с максимальной суммарной зарплатой сотрудников. 
 
 WITH dep_salary AS
 	(SELECT DEPARTMENT_Id, sum(SALARY) AS SALARY
@@ -59,7 +60,9 @@ SELECT DEPARTMENT_Id
 FROM dep_salary
 WHERE dep_salary.salary = (SELECT max(salary) FROM dep_salary);
 
-Сотрудника, чье имя начинается на «Р» и заканчивается на «н».
+==Сотрудника, чье имя начинается на «Р» и заканчивается на «н».
 SELECT NAME
 FROM EMPLOYEE
 WHERE NAME LIKE 'Р%н';
+
+--Задание 2

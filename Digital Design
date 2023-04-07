@@ -1,4 +1,4 @@
-==Задание 1
+--Задание 1
 CREATE TABLE DEPARTMENT (
   Id NUMDER PRIMARY KEY,
   NAME  VARCHAR2(100)
@@ -65,4 +65,3 @@ SELECT NAME
 FROM EMPLOYEE
 WHERE NAME LIKE 'Р%н';
 
---Задание 2

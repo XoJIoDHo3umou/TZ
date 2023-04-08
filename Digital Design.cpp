@@ -1,3 +1,6 @@
+//Задание 2
+
+
 using System.Text;
 using TestTasks;
 
@@ -7,7 +10,7 @@ internal class Program
     {
         const string FILENAME = @"C:\repository\TestTasks\Text.txt";
         var filePath = File.ReadAllText(FILENAME, Encoding.UTF8);
-        if (filePath != null) //проверка на пустой файл
+        if (filePath != null) 
         {
             var textDictionary = new Lib();
             var wordDictionary = textDictionary.ConvertToDictionary(filePath);
@@ -35,17 +38,13 @@ public class Lib
         char[] splitChars =
         {
             ' ', ',', '.', ':', '\t', '<', '>', '\n', ')', '(', '!', '?', ';', '"', ']', '[', '/', '-', '*'
-        }; //разделители
+        }; 
         var words = filePath.Split(splitChars).Select(word => word.ToLower()).ToArray();
-        //Split - разбивает строку на подстроки            
-        //ToLower - возвращает строку в нижнем регистре
         var wordsItem = words.Distinct().ToArray();
-        //Distinct - возвращает уникальные строки
         foreach (var item in wordsItem)
         {
             var count = 0;
             count = words.Where(word => word.Equals(item)).Count();
-            //подсчет одинаковых строк
             answerBook.Add(item, count);
         }
 

@@ -2,23 +2,23 @@
 
 
 using System.Text;
-using TestTasks;
+using Test;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        const string FILENAME = @"C:\repository\TestTasks\Text.txt";
+        const string FILENAME = @"C:\Hitory\Test\Text.txt";
         var filePath = File.ReadAllText(FILENAME, Encoding.UTF8);
         if (filePath != null) 
         {
             var textDictionary = new Lib();
             var wordDictionary = textDictionary.ConvertToDictionary(filePath);
-            using var uniqueWords = new StreamWriter(@"C:\repository\TestTasks\WordsInText.txt");
+            using var uniqueWords = new StreamWriter(@"C:\Hitory\Test\WordsInText.txt");
             {
                 foreach (var i in
                          wordDictionary.OrderByDescending(x => x.Value))
-                    uniqueWords.WriteLine($"{i.Key} - {i.Value}"); //Вывод словаря в текстовый файл
+                    uniqueWords.WriteLine($"{i.Key} - {i.Value}");
             }
         }
         else
@@ -28,7 +28,7 @@ internal class Program
     }
 }
 
-namespace TestTasks;
+namespace Test;
 
 public class Lib
 {

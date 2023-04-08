@@ -28,6 +28,7 @@ internal class Program
     }
 }
 
+
 namespace Test;
 
 public class Lib
